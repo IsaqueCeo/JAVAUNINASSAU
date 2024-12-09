@@ -90,8 +90,8 @@ public class SistemaGerenciamentoTarefas {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida! Por favor, insira um número.");
-                scanner.nextLine();
-                opcao = 0;
+                scanner.nextLine(); // Limpar buffer
+                opcao = 0; // Resetar para evitar saída do loop
             }
         } while (opcao != 7);
 
@@ -108,7 +108,7 @@ public class SistemaGerenciamentoTarefas {
 
         Tarefa novaTarefa = new Tarefa(os, descricao, data);
         listaTarefas.add(novaTarefa);
-        listaTarefas.sort(Comparator.comparingInt(t -> t.ordemServico));
+        listaTarefas.sort(Comparator.comparingInt(t -> t.ordemServico)); // Ordenar após adição
         pilhaAcoes.push(new Acao(++codigoAcao, "Adicionado", novaTarefa));
         System.out.println("Tarefa adicionada com sucesso!");
         exibirLista();
